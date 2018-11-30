@@ -340,12 +340,16 @@ export default class extends ProfilePage {
                 title: task.name,
                 description: description_fn(task),
                 content: task.description,
-                owner: task.createdBy,
+                owner: task.createdBy || {profile: {
+                    firstName: '',
+                    lastName: 'DELETED'
+                }},
                 applicationDeadlinePassed: Date.now() > applicationDeadline,
                 id: task._id,
                 task
             }
         })
+
         return (
             <InfiniteScroll
                 initialLoad={false}
