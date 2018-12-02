@@ -169,9 +169,9 @@ export default class extends Base{
                     constant.TASK_STATUS.DISTRIBUTED
             ]}
 
-        } else if (!param.status) {
+        } else if (!param.status && !isAdmin) {
 
-            // by default we only show tasks with these statuses
+            // by default we only show tasks with these statuses if they are not an admin
             query.status = {
                 $in: [
                     constant.TASK_STATUS.CREATED,
